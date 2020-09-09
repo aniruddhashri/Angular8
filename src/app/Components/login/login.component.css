@@ -1,0 +1,32 @@
+#radiodiv input  
+{
+    margin-left: 2%;
+}
+
+#radiodiv label  
+{
+    margin-left: 2%;
+}
+.passbtn{
+    position: relative;
+    left:80%;
+    background-color:cornflowerblue;
+}
+#btndiv{
+    text-align: -webkit-center;
+}
+
+.justify1
+{
+    text-align: -webkit-center;
+}
+
+h5{
+    text-align: center;
+    color:red
+}
+
+h4{
+    text-align: center;
+}
+

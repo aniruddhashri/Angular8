@@ -1,0 +1,47 @@
+
+<a href="">Login</a> 
+<form #myForm="ngForm" class="border border-light p-5">
+    <h4>REGISTER </h4> 
+    <br>
+<div class="container justify1" > 
+    <div class= "col-md-3">
+        <div class="row">
+            <input type="text" class="form-control mb-4" required autocomplete="off" placeholder="Username" name="username" [(ngModel)]="username"/>
+         </div>
+        <div class="row">
+            <input type="password" class="form-control mb-4" required autocomplete="off" placeholder="Password" name="password" [(ngModel)]="password" />
+        </div>
+
+        <div class="row">
+            <input type="password" class="form-control mb-4" required autocomplete="off" placeholder="Confirm Password" name="cnfpassword" [(ngModel)]="cnfpassword" />
+        </div>
+
+        <div class="row">
+            <input type="text" class="form-control mb-4" required placeholder="Address" name="address" [(ngModel)]="address" />
+        </div>
+
+
+        <div class="row">
+            <input type="number" class="form-control mb-4" maxlength="10" required placeholder="Mobile No" name="mblno" [(ngModel)]="mblno" />
+        </div>
+
+        <div class="row">
+            <input type="email" class="form-control mb-4" required placeholder="Email Id" name="email" [(ngModel)]="email" />
+        </div>
+    </div>
+    <div class= "col-md-3">
+        <label>Register as</label>
+        <div id="radiodiv">
+            <input type="radio" id="rd1" name="rdusertype" required [(ngModel)]="rdusertype" value="customer"/>
+            <label for="rd1">Customer</label>
+            <input type="radio" name="rdusertype" id="rd2" required [(ngModel)]="rdusertype" value="manager"/>
+            <label for="rd2">HOTEL MANAGER</label>
+        </div>   
+    </div>
+    <div id="btndiv" class= "col-md-3">
+        <button class="btn btn-primary" [disabled]="myForm.form.invalid" (click)="register()">REGISTER</button>    
+    </div>
+</div>
+
+<h4>{{this.message}}</h4>
+</form>

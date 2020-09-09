@@ -1,0 +1,21 @@
+button{
+    left: 93%;
+    position: relative;
+}
+
+.container{
+    border-bottom-style:inset
+}
+
+h5,h4,th,tr{
+    text-align: center;
+}
+
+tr:nth-child(odd) { 
+    background-color: aliceblue; 
+} 
+
+tr:nth-child(even) { 
+    background-color:lightyellow; 
+} 
+
