@@ -7,7 +7,8 @@ import { LoginComponent } from './Components/login/login.component';
 import { CustomerComponent } from './Components/customer/customer.component';
 import { AdminComponent } from './Components/admin/admin.component';
 import { RegistrationComponent } from './Components/registration/registration.component';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { AboutComponent } from './Components/about/about.component'
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {HttpClientModule} from '@angular/common/http'
     LoginComponent,
     CustomerComponent,
     AdminComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

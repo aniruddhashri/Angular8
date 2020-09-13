@@ -1,7 +1,18 @@
-<button class="btn btn-primary" (click)="logout()">Logout</button>
-<a href="">Edit Profile</a>
-
-<form #myForm="ngForm" class="border border-light p-5">
+<div id="container">
+    <div id="Menubar" *ngIf="toggle1">
+            <div class="nav" (click)="route('admin')">
+            <img src="\assets\img\home.png"/>
+            </div>
+            <div class="nav" (click)="route('about')">
+            <img src="\assets\img\telephone.png"/>
+            </div>
+            <div class="nav" (click)="logout()">
+                <button class="btn btn-primary " (click)="logout()">Logout</button>
+            </div>
+    </div>
+</div>
+<div style="left: 48%;position: relative;"><button (click)="toggle()"></button></div>
+<form #myForm="ngForm" class="border border-light p-4">
     <h4>Welcome Admin {{this.username}} </h4> 
     <h5>{{responseMessage}}</h5>
     <br>
@@ -26,14 +37,14 @@
         
         
     </div>
-    <div *ngIf="menudata1.length>0">
+    <div *ngIf="menudataresp.length>0">
         <table border="2 em" width="100%">
             <thead>
                 <th width="73%">Dish Name</th>
                 <th width="25%">Price</th>
                 <th width="2%"></th>
             </thead>
-            <tr *ngFor="let data1 of menudata1;let i = index">
+            <tr *ngFor="let data1 of menudataresp;let i = index">
                 <td>{{data1.dishname}}</td>
                 <td>{{data1.price}} $</td>
                 <td><button style="position: initial;" (click)="deleterow(i)">X</button></td>
@@ -42,3 +53,4 @@
     </div>
     
 </form> 
+

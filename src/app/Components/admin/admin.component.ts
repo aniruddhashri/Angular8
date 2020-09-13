@@ -27,7 +27,7 @@ export class AdminComponent implements OnInit {
   responseMessage: any;
 
   menulistschema:Menulistschema
-  
+  toggle1:boolean = true
 
   constructor(private _router:Router,private sharedser: SharedServiceService) { }
 
@@ -80,5 +80,15 @@ export class AdminComponent implements OnInit {
         this.menudataresp.push({dishname:this.dishname,price: this.price.toString()});
       }
     )
+  }
+
+   route(path)
+  {
+    this._router.navigateByUrl(path)
+  }
+
+  toggle()
+  {
+    this.toggle1 = ! this.toggle1
   }
 }
