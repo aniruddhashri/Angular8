@@ -41,4 +41,8 @@ export class CustomerComponent implements OnInit {
        })
        }
   }
+
+  addtocart(cart){
+
+  }
 }
