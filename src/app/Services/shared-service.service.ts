@@ -7,6 +7,7 @@ import {respfromDB} from '../Components/registration/resp'
 import {loginschema} from '../Components/login/loginschema'
 import {LoginrespfrmDB} from '../Components/login/loginrespfrmDB'
 import {menuschema} from  '../Components/admin/Schemas/menuschema'
+import {HeaderComponent} from '../Components/header/header.component'
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ import {menuschema} from  '../Components/admin/Schemas/menuschema'
 export class SharedServiceService {
   userdata:any
   menusch:menuschema
+  userloggedon:boolean = false
   constructor(private _http:HttpClient) { }
 
   public register(data:regschema):Observable<any>{
@@ -24,15 +26,31 @@ export class SharedServiceService {
       map((responsefrmDB:respfromDB)=>{
         return responsefrmDB
       })
-
     )
     return resp
   }
 
+public testApi2Api():Observable<any>{
+  
+//const apiresp = 
+return this._http.get("/api/listing/check").pipe(
+      map((apiresponse)=>{
+      return apiresponse
+    })
+    )
+  //  return apiresp
+}
+
   public login(logindetails : loginschema) : Observable<any>{
     const loginresp = this._http.post("/api/listing/login", logindetails).pipe(
       map((loginrespfrmDB:LoginrespfrmDB)=>{
+        if(loginrespfrmDB.status == "200")
+        {
+        this.userloggedon = true;
+        }
+
         this.userdata = loginrespfrmDB;
+
       return loginrespfrmDB
     })
     )
@@ -44,7 +62,6 @@ export class SharedServiceService {
       map((menuresp)=>{
         return menuresp;
       })
-      
     )
     return menures1
   }
@@ -59,7 +76,7 @@ export class SharedServiceService {
   }
 
   public deletemenu(dishname):Observable<any>{
-    const menures1 = this._http.get("/api/listing/deletemenu",).pipe(
+    const menures1 = this._http.post("/api/listing/deletemenu",dishname).pipe(
       map((menulistresp)=>{
         return menulistresp;
       })
@@ -67,8 +84,8 @@ export class SharedServiceService {
     return menures1
   }
 
-  public logout(): void{
-    localStorage.setItem('isLoggedIn','false'); 
+  public logout(): void{ 
+    this.userloggedon = false
  }
 }
 

@@ -7,6 +7,9 @@
 {
     margin-left: 2%;
 }
+label{
+    color: antiquewhite;
+}
 
 #btndiv{
     text-align: -webkit-center;
@@ -24,9 +27,18 @@ h5{
 
 h4{
     text-align: center;
+    color: antiquewhite;
 }
 
 a{
     left: 95%;
     position: relative;
+}
+.regcontainer{
+    background-image: URl('assets/img/hotel2.jpg');
+    width: 98%;
+    position: absolute;
+    background-repeat: round;
+    margin: 5px;
+    height: 98%;
 }

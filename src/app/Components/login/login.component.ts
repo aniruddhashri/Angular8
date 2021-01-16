@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import {Router} from  '@angular/router'
 import {SharedServiceService} from '../../Services/shared-service.service'
 import {loginschema} from './loginschema'
 import { LoginrespfrmDB,Data1 } from './loginrespfrmDB';
-
+import {MatDialog} from '@angular/material/dialog';
+import {DialogalertComponent} from '../dialogalert/dialogalert.component'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,18 +21,29 @@ export class LoginComponent implements OnInit {
   logininput :string
   loginresp : LoginrespfrmDB
 
-data1:Data1[]
-usertype : String 
+  data1:Data1[]
+  usertype : String 
   isTextFieldType: boolean = false;
 
-  constructor(private _router:Router,private service:SharedServiceService) { }
-  ngOnInit() {
+  
 
-  }
+  constructor(private _router:Router,private service:SharedServiceService,public dialog: MatDialog) { }
+  ngOnInit() {}
 
   register()
   {
     this._router.navigateByUrl('/register')
+  }
+
+   openDialog() 
+   {
+    const dialogRef = this.dialog.open(DialogalertComponent, {
+    width: '650px',
+    data: {email: this.email}}
+    );
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
   login()
@@ -43,7 +55,6 @@ usertype : String
       this.service.login(this.loginsch).subscribe(
         data=>{
           this.loginresp = data;
-          localStorage.setItem('isLoggedIn','true'); 
           
           if(this.loginresp.status == "200")
           {
@@ -53,7 +64,7 @@ usertype : String
             }
             else if(this.loginresp.Data.usertype == "manager")
             {
-              this._router.navigateByUrl('/admin')
+              this._router.navigateByUrl('/manager')
             }
           } 
           else
@@ -65,12 +76,14 @@ usertype : String
         this.errorMessage = this.loginresp.error
       }
   }
-
   
   togglePasswordFieldType(){
     this.isTextFieldType = !this.isTextFieldType;
   }
-  }
+
+}
+  
+
 
  
 

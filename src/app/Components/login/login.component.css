@@ -19,6 +19,16 @@
 .justify1
 {
     text-align: -webkit-center;
+    
+}
+
+.logincontainer{
+    background-image: URl('assets/img/hotel3.jpg');
+    width: 98%;
+    position: absolute;
+    background-repeat: round;
+    margin: 5px;
+    height: 98%;
 }
 
 h5{
@@ -28,5 +38,6 @@ h5{
 
 h4{
     text-align: center;
+    color: floralwhite;
 }
 

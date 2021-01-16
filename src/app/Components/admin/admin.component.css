@@ -1,52 +1,23 @@
-/* button{
-    left: 93%;
-    position: relative;
-} */
-
+#btndiv{
+    text-align: end;
+}
 .container{
-    border-bottom-style:inset
+    border-bottom-style:inset;
+    margin-bottom:10px
 }
 
 h5,h4,th,tr{
     text-align: center;
 }
 
-tr:nth-child(odd) { 
+/*tr:nth-child(odd) { 
     background-color: rgb(105, 128, 148); 
 } 
 
 tr:nth-child(even) { 
     background-color:lightyellow; 
-} 
+} */
 
-#Menubar
-{
-    display: flex;
-    align-items: stretch;
-    background-color: #1267c7 !important;
-    height: 100%;
-    width: 100%;
-}
 
-#container
-{
-    display: flex;
-    align-items: stretch;
-    background-color: #abc5e4 !important;
-    height: 100%;
-}
-
-.nav{
-    margin: 15px;
-    left: 80%;
-    position: relative;
-}
-.nav:hover{
-    cursor: pointer;
-}
-
-img{
-    height:30px
-}
 
 

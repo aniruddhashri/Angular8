@@ -1,1 +1,19 @@
-<p>about works!</p>
+<app-header></app-header>
+<button class="btn btn-primary" style="margin:10px;position: relative;" (click)="testapi()">API Test</button>
+
+<div *ngIf="testdata.length>0">
+            <table class="table" border="2 em" width="100%">
+                <thead>
+                    <th width="5%">ID</th>
+                    <th width="30%">Title</th>
+                    <!--<th width="25%">URL</th>-->
+                    <th width="25%">Image</th>
+                </thead>
+                <tr *ngFor="let testdata1 of testdata;let i = index">
+                    <td>{{testdata1.id}}</td>
+                    <td>{{testdata1.title}}</td>
+                    <!--<td><img [src]=testdata1.url alt=""></td>-->
+                    <td><img [src]=testdata1.thumbnailUrl alt=""></td>
+                </tr>
+            </table>
+        </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {SharedServiceService} from '../../Services/shared-service.service'
 import {regschema} from './regschema'
  import {respfromDB} from './resp'
@@ -26,11 +27,14 @@ export class RegistrationComponent implements OnInit {
   response:respfromDB;
   regsch:regschema 
 
-  constructor(private sharedsvc : SharedServiceService) { }
+  constructor(private sharedsvc : SharedServiceService,private _router:Router) { }
 
   ngOnInit() {
   }
-
+  login()
+  {
+    this._router.navigateByUrl('/login')
+  }
   register()
   {
     this.regsch = {

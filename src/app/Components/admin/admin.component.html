@@ -1,21 +1,7 @@
-<div id="container">
-    <div id="Menubar" *ngIf="toggle1">
-            <div class="nav" (click)="route('admin')">
-            <img src="\assets\img\home.png"/>
-            </div>
-            <div class="nav" (click)="route('about')">
-            <img src="\assets\img\telephone.png"/>
-            </div>
-            <div class="nav" (click)="logout()">
-                <button class="btn btn-primary " (click)="logout()">Logout</button>
-            </div>
-    </div>
-</div>
-<div style="left: 48%;position: relative;"><button (click)="toggle()"></button></div>
+<app-header></app-header>
 <form #myForm="ngForm" class="border border-light p-4">
-    <h4>Welcome Admin {{this.username}} </h4> 
+    <p appHighlight>Welcome Admin {{this.username}} </p> 
     <h5>{{responseMessage}}</h5>
-    <br>
     <div class="container" > 
         <div class= "row">
             <div class="col-md-3">
@@ -25,28 +11,31 @@
                 <input type="number" class="form-control mb-4" required autocomplete="off" placeholder="Price" name="price" [(ngModel)]="price" />
             </div>
             <div class="col-md-3">
-                <input type="file" class="form-control mb-4" placeholder="Image" name="dishimage" [(ngModel)]="dishimage" />
+                <ng-container *ngIf="isImageSaved">
+                            <img [src]="cardImageBase64" />
+                        </ng-container>
+                     
+                <input type="file" class="form-control mb-4" placeholder="Image" name="dishimage" (change)="fileChangeEvent($event)" />
             </div>
             <div id="btndiv"  class="col-md-1">
                 <button class="btn btn-primary" [disabled]="myForm.form.invalid" (click)="AddMenu()">Add</button>
             </div>
         </div>
-        <!-- <div id="btndiv1"  class="col-md-3">
-            <button class="btn btn-primary" [disabled]="myForm.form.invalid" (click)="SubmitMenu()">Submit</button>
-        </div> -->
-        
         
     </div>
-    <div *ngIf="menudataresp.length>0">
-        <table border="2 em" width="100%">
+    
+    <div *ngIf="menudataresp.length>0" class="table-responsive">
+        <table class="table-bordered"  width="100%">
             <thead>
-                <th width="73%">Dish Name</th>
-                <th width="25%">Price</th>
+                <th width="30%">Dish Name</th>
+                <th width="30%">Price</th>
+                <th width="38%"></th>
                 <th width="2%"></th>
             </thead>
             <tr *ngFor="let data1 of menudataresp;let i = index">
                 <td>{{data1.dishname}}</td>
                 <td>{{data1.price}} $</td>
+                <td><img [src]=data1.dishimg height="120px" alt=""></td>
                 <td><button style="position: initial;" (click)="deleterow(i)">X</button></td>
             </tr>
         </table>

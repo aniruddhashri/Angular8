@@ -1,10 +1,10 @@
 
-<a href="">Login</a> 
+ <div class="regcontainer">
 <form #myForm="ngForm" class="border border-light p-5">
-    <h4>REGISTER </h4> 
+    <h4><b>REGISTRATION</b></h4> 
     <br>
 <div class="container justify1" > 
-    <div class= "col-md-3">
+    <div class= "col-md-6">
         <div class="row">
             <input type="text" class="form-control mb-4" required autocomplete="off" placeholder="Username" name="username" [(ngModel)]="username"/>
          </div>
@@ -29,19 +29,24 @@
             <input type="email" class="form-control mb-4" required placeholder="Email Id" name="email" [(ngModel)]="email" />
         </div>
     </div>
-    <div class= "col-md-3">
+    <div class= "col-md-6">
         <label>Register as</label>
         <div id="radiodiv">
             <input type="radio" id="rd1" name="rdusertype" required [(ngModel)]="rdusertype" value="customer"/>
             <label for="rd1">Customer</label>
             <input type="radio" name="rdusertype" id="rd2" required [(ngModel)]="rdusertype" value="manager"/>
-            <label for="rd2">HOTEL MANAGER</label>
+            <label for="rd2">Admin</label>
         </div>   
     </div>
-    <div id="btndiv" class= "col-md-3">
-        <button class="btn btn-primary" [disabled]="myForm.form.invalid" (click)="register()">REGISTER</button>    
+    <div id="btndiv" class="col-md-6">
+        <button class="btn btn-primary" [disabled]="myForm.form.invalid || (password!=cnfpassword)" (click)="register()">REGISTER</button>    
+        <button class="btn btn-primary" style="margin:10px;position: relative;" (click)="login()">Login</button>
     </div>
 </div>
 
-<h4>{{this.message}}</h4>
+<h4 appHighlight>{{this.message}}</h4>
+<div appHighlight *ngIf="password!='' && cnfpassword!='' && (password!=cnfpassword)">
+Password and Confirm Password Did not matched
+</div>
 </form>
+</div>
