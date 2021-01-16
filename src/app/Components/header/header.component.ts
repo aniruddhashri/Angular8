@@ -10,11 +10,11 @@ import { SharedServiceService } from 'src/app/Services/shared-service.service';
 export class HeaderComponent implements OnInit {
   toggle1:boolean = true
   checkifloggedon:boolean = false
-  constructor(private _router:Router,private sharedser: SharedServiceService) { 
+  constructor(private _router:Router,public sharedser: SharedServiceService) { 
   }
 
   ngOnInit() {
-    alert(this.sharedser.userloggedon)
+   // alert(this.sharedser.userloggedon)
   if(!this.sharedser.userloggedon==true)
   {
     this.sharedser.logout();
