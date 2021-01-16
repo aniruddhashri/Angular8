@@ -6,7 +6,6 @@ const dotenv = require("dotenv");
 
 var https = require('https');
 
-
 router.get("/check",(req,resp)=>{
     try
     {
