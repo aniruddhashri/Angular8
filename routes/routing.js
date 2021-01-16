@@ -2,6 +2,41 @@ const router = require("express").Router();
 
 const Register = require("../models/registerschema")
 const Menus = require("../models/menuschema")
+const dotenv = require("dotenv");
+
+var https = require('https');
+
+
+router.get("/check",(req,resp)=>{
+    try
+    {
+
+        // https.get('https://jsonplaceholder.typicode.com/photos', (resp1) => {
+        https.get(process.env.APIURL, (resp1) => {
+        let data = '';
+
+        resp1.on('data', (chunk) => {
+        data += chunk;
+        });
+
+        // The whole response has been received. Print out the result.
+        resp1.on('end', () => {
+        // console.log(JSON.parse(data));
+        
+        resp.json({data1: JSON.parse(data),status:100});        
+        });
+
+        }).on("error", (err) => {
+        console.log("Error: " + err.message);
+        });
+        
+        
+    }
+    catch(err) 
+    {
+        resp.send({error:err,status:500});
+    }
+})
 
 router.post("/register",async (req,resp)=>{
     const register = new Register({
@@ -80,7 +115,8 @@ router.post("/addmenu",(req,resp)=>{
 
     const menus = new Menus({
         dishname : req.body.dishname,
-        price : req.body.price
+        price : req.body.price,
+        dishimg : req.body.dishimg
     })
     try
     {
@@ -116,7 +152,8 @@ router.post("/addmenu",(req,resp)=>{
 router.get("/fetchmenu",(req,resp)=>{
     const menus = new Menus({
         dishname : req.body.dishname,
-        price : req.body.price
+        price : req.body.price,
+        dishimg : req.body.dishimg
     })
 
     try
@@ -140,10 +177,8 @@ router.get("/fetchmenu",(req,resp)=>{
 
 router.post("/deletemenu",(req,resp)=>{
 
-console.log(req.body.dishname)
         try
         {
-        console.log(req.body.dishname)
         Menus.findOneAndDelete({dishname : req.body.dishname})
         .then(dish=>
         {
