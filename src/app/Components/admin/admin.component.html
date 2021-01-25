@@ -4,18 +4,18 @@
     <h5>{{responseMessage}}</h5>
     <div class="container" > 
         <div class= "row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <input type="text" class="form-control mb-4" required autocomplete="off" placeholder="Name of Dish" name="dishname" [(ngModel)]="dishname"/>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <input type="number" class="form-control mb-4" required autocomplete="off" placeholder="Price" name="price" [(ngModel)]="price" />
             </div>
-            <div class="col-md-3">
+            <div class="col-md-5">
                 <ng-container *ngIf="isImageSaved">
                             <img [src]="cardImageBase64" />
                         </ng-container>
                      
-                <input type="file" class="form-control mb-4" placeholder="Image" name="dishimage" (change)="fileChangeEvent($event)" />
+                <input type="file" class="form-control mb-4" required placeholder="Image" [(ngModel)]="dishimage" name="dishimage" (change)="fileChangeEvent($event)" />
             </div>
             <div id="btndiv"  class="col-md-1">
                 <button class="btn btn-primary" [disabled]="myForm.form.invalid" (click)="AddMenu()">Add</button>

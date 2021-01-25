@@ -1,14 +1,15 @@
-
-<h2 mat-dialog-title>Dialog Test Page</h2>
+<!doctype html>
+<div [ngClass]="errorstatus==true?'bg-danger':'bg-success'">
 <mat-dialog-content class="mat-typography">
-  <div class= "col-md-3">
+  <!-- <div class="col-md-3"> -->
         <div class="row">
-            <input type="email" class="form-control mb-4" required autocomplete="on" placeholder="E-Mail" name="email" [(ngModel)]="email"/>
+            <!-- <input type="email" class="form-control mb-4" required autocomplete="on" placeholder="E-Mail" name="email" [(ngModel)]="email"/> -->
+            <h2 mat-dialog-title><p>{{this.Message}}</p></h2>            
          </div>
-    </div>
+    <!-- </div> -->
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button (click)="test()" cdkFocusInitial>Test</button>
+  <!-- <button mat-button (click)="test()">Test</button> -->
   <button mat-button mat-dialog-close>Close</button>
 </mat-dialog-actions>
-
+</div>

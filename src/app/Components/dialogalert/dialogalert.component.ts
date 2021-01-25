@@ -13,10 +13,18 @@ constructor(@Inject(MAT_DIALOG_DATA) public data:any,private dialogRef: MatDialo
   dialogRef.disableClose = true;
 }
 
-email:String
+errorstatus:boolean
+Message:String
 
 ngOnInit() {
-  this.email = this.data.email
+ try{ 
+  this.Message = this.data.Message
+  this.errorstatus = this.data.errorstatus
+}
+catch(e)
+{
+  //this.Message =  this.data.Message
+}
 }
 
   test(){

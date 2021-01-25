@@ -1,7 +1,7 @@
-
+<!doctype html>
 <div class="logincontainer">
 <form #myForm="ngForm" class="border-light p-5">
-    <h4>Welcome to Angular 8 </h4> 
+    <h4>Welcome</h4> 
     <br>
 <div class="container justify1" >
    
@@ -17,7 +17,6 @@
     <div id="btndiv" class= "col-md-3">
         <button class="btn btn-primary" style="opacity: 1;" [disabled]="myForm.form.invalid" (click)="login()">Login</button>
         <button class="btn btn-primary" style="margin:10px;position: relative;" (click)="register()">Register</button>
-        <button class="btn btn-primary" style="margin:10px;position: relative;" (click)="openDialog()">Dialog</button>
     </div>
 </div>
 <br/>

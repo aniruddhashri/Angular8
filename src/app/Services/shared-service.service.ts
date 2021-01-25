@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
 import {Observable} from 'rxjs'
-import {map} from 'rxjs/operators'
+import {map,catchError} from 'rxjs/operators'
 import {regschema} from '../Components/registration/regschema'
 import {respfromDB} from '../Components/registration/resp'
 import {loginschema} from '../Components/login/loginschema'
 import {LoginrespfrmDB} from '../Components/login/loginrespfrmDB'
 import {menuschema} from  '../Components/admin/Schemas/menuschema'
-import {HeaderComponent} from '../Components/header/header.component'
+import {DialogalertComponent} from '../Components/dialogalert/dialogalert.component'
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +17,15 @@ export class SharedServiceService {
   userdata:any
   menusch:menuschema
   userloggedon:boolean = false
-  constructor(private _http:HttpClient) { }
+  public cartdata:any[]=[]
+  constructor(private _http:HttpClient,public dialog: MatDialog) { }
 
   public register(data:regschema):Observable<any>{
   const headers1= new HttpHeaders().set('Access-Control-Allow-Origin', '*');
   headers1.append('Access-Control-Allow-Headers', 'Content-Type');
     
-   const resp = this._http.post("/api/listing/register",data,{headers:headers1}).pipe(
-      map((responsefrmDB:respfromDB)=>{
+   const resp = this._http.post<respfromDB>("/api/listing/register",data,{headers:headers1}).pipe(
+      map((responsefrmDB)=>{
         return responsefrmDB
       })
     )
@@ -32,18 +34,16 @@ export class SharedServiceService {
 
 public testApi2Api():Observable<any>{
   
-//const apiresp = 
 return this._http.get("/api/listing/check").pipe(
       map((apiresponse)=>{
       return apiresponse
     })
     )
-  //  return apiresp
 }
 
   public login(logindetails : loginschema) : Observable<any>{
-    const loginresp = this._http.post("/api/listing/login", logindetails).pipe(
-      map((loginrespfrmDB:LoginrespfrmDB)=>{
+    const loginresp = this._http.post<LoginrespfrmDB>("/api/listing/login", logindetails).pipe(
+      map((loginrespfrmDB)=>{
         if(loginrespfrmDB.status == "200")
         {
         this.userloggedon = true;
@@ -52,6 +52,16 @@ return this._http.get("/api/listing/check").pipe(
         this.userdata = loginrespfrmDB;
 
       return loginrespfrmDB
+    }),
+    catchError((error, caught) => {
+      this.dialog.open(DialogalertComponent, {
+        width: '650px',
+        height: '160px',
+        data: {Message: error.statusText,errorstatus:true},
+        panelClass: 'custom-modalbox'}
+        );
+        
+      return Observable.throw(error);
     })
     )
     return loginresp

@@ -80,16 +80,12 @@ export class AdminComponent implements OnInit {
         this.menudataresp.push({dishname:this.dishname,price: this.price,dishimg:this.cardImageBase64});
         this.dishname = ""
         this.price = null
-        this.cardImageBase64 = ""
         this.dishimage = null
+        this.cardImageBase64 = null;
+        this.isImageSaved = false;
       }
         }
     )
-  }
-
-  filepath(files: FileList)
-  {
-    this.dishimage = files.item(0)
   }
 
 fileChangeEvent(fileInput: any) {
@@ -136,8 +132,4 @@ fileChangeEvent(fileInput: any) {
         }
     }
 
-    removeImage() {
-        this.cardImageBase64 = null;
-        this.isImageSaved = false;
-    }
 }

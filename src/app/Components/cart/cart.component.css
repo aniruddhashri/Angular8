@@ -1,0 +1,30 @@
+
+.childdiv{
+    border-style: inset;
+    border-radius: 25px;
+}
+
+.table-responsive{
+    margin: 25px;
+    border: outset;
+    padding: 25px;
+    border-radius: 40px;
+    background: lightblue;
+    text-align: center;
+    display: flex;
+    width: fit-content
+}
+
+h2,h3{
+    background: cornflowerblue;
+    border-radius: 35px;
+    margin: 5px;
+    text-align: center
+    }
+
+img{
+        height: 170px;
+        border: outset;
+        border-radius: 35px;
+        border-color:  cornflowerblue;
+    }

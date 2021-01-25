@@ -15,6 +15,7 @@ export class CustomerComponent implements OnInit {
   email:String;
   menudata1:any[]=[]
 
+
   userdata1:LoginrespfrmDB
 
   testdata:String[] =[]
@@ -24,7 +25,7 @@ export class CustomerComponent implements OnInit {
   cardImageBase64: string;
 
 
-  constructor(private sharedser: SharedServiceService) { }
+  constructor(public sharedser: SharedServiceService,public _router:Router) { }
 
   ngOnInit() {
     try{ 
@@ -42,7 +43,13 @@ export class CustomerComponent implements OnInit {
        }
   }
 
-  addtocart(cart){
-
+  addtocart(i)
+  {
+    this.sharedser.cartdata.push(i)
   }
-}
+
+  viewcart()
+  {
+    this._router.navigateByUrl('/cart')
+  }
+} 

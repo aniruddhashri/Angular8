@@ -5,12 +5,16 @@ import {loginschema} from './loginschema'
 import { LoginrespfrmDB,Data1 } from './loginrespfrmDB';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogalertComponent} from '../dialogalert/dialogalert.component'
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  
+
+  
   email:string;
   password:string;
   rdusertype:string;
@@ -25,25 +29,22 @@ export class LoginComponent implements OnInit {
   usertype : String 
   isTextFieldType: boolean = false;
 
-  
+  userLoginForm:FormGroup
+  email1:FormControl
+  password1:FormControl
 
-  constructor(private _router:Router,private service:SharedServiceService,public dialog: MatDialog) { }
-  ngOnInit() {}
+  constructor(private _router:Router,private service:SharedServiceService,public dialog: MatDialog,private formBuilder: FormBuilder) { }
+  ngOnInit() {
+  this.userLoginForm = this.formBuilder.group({
+  email1: new FormControl('', Validators.required),
+  password1: new FormControl('', Validators.required)
+})
+
+  }
 
   register()
   {
     this._router.navigateByUrl('/register')
-  }
-
-   openDialog() 
-   {
-    const dialogRef = this.dialog.open(DialogalertComponent, {
-    width: '650px',
-    data: {email: this.email}}
-    );
-
-    dialogRef.afterClosed().subscribe(result => {
-    });
   }
 
   login()
@@ -69,10 +70,20 @@ export class LoginComponent implements OnInit {
           } 
           else
           {
-            this.errorMessage = this.loginresp.error
+            this.dialog.open(DialogalertComponent, {
+              width: '650px',
+              height: '160px',
+              data: {Message: this.loginresp.error,errorstatus:true}}
+              );
+            //this.errorMessage = this.loginresp.error
           }
       })
       err=>{
+        this.dialog.open(DialogalertComponent, {
+          width: '650px',
+          height: '160px',
+          data: {Message: this.loginresp.error,errorstatus:true}}
+          );
         this.errorMessage = this.loginresp.error
       }
   }

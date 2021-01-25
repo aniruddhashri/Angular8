@@ -16,7 +16,9 @@ import { LandingComponent } from './Components/landing/landing.component'
 import {  PagenotfoundComponent} from './Components/pagenotfound/pagenotfound.component';
 import { ApidataComponent } from './Components/apidata/apidata.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import {MatDialogModule} from '@angular/material/dialog'
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field' 
+import { CartComponent } from './Components/cart/cart.component'
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import {MatDialogModule} from '@angular/material/dialog'
     LandingComponent,
     PagenotfoundComponent,
     ApidataComponent,
-    DialogalertComponent
+    DialogalertComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import {MatDialogModule} from '@angular/material/dialog'
     FormsModule,ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule
       ],
   providers: [],
   entryComponents: [DialogalertComponent],

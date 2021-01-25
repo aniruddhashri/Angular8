@@ -2,22 +2,11 @@
 <form #myForm="ngForm" class="border border-light p-4">
     <h4>Welcome {{this.username}} </h4> 
     <!--<br>-->
+    <button (click)="viewcart()">
+        View Cart
+    </button>
 <div class="container justify1" > 
-    <!--<div class= "col-md-3">-->
-        <!-- <div class="row">
-            <input type="text" class="form-control mb-4" autocomplete="off" placeholder="Username" name="username" [(ngModel)]="username"/>
-         </div>
-        <div class="row">
-            <input type="text" class="form-control mb-4" placeholder="Address" name="address" [(ngModel)]="address" />
-        </div>
-
-        <div class="row">
-            <input type="text" class="form-control mb-4" placeholder="Mobile No" name="mblno" [(ngModel)]="mblno" />
-        </div>
-        <div class="row">
-            <input type="email" class="form-control mb-4" placeholder="Email Id" name="email" [(ngModel)]="email" />
-        </div> -->
-        
+    
         <div *ngIf="menudata1.length>0" class="table-responsive">
             <table class="table-bordered"  width="100%">
                 <thead>
@@ -26,17 +15,13 @@
                     <th width="20%"></th>
                     <th width="20%"></th>
                 </thead>
-                <tr *ngFor="let data1 of menudata1;let i = index">
+                <tr *ngFor="let data1 of menudata1;">
                     <td>{{data1.dishname}}</td>
                     <td>{{data1.price}} $</td>
                     <td><img [src]=data1.dishimg height="120px" alt=""></td>
-                    <td><button class="btn btn-info" style="position: initial;" (click)="addtocart(i)">Add to cart</button></td>
+                    <td><button class="btn btn-info" style="position: initial;" (click)="addtocart(data1)">Add to cart</button></td>
                 </tr>
             </table>
         </div>
-
-        
-
-    <!--</div>-->
     </div>
     </form> 
