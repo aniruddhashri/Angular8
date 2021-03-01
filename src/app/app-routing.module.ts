@@ -40,6 +40,11 @@ export class AppRoutingModule{
       this.httpClient.get("../env.json").toPromise().then((response : any) => {
       this.jsonData.push(response)
       this.sharedsrv.jsonData = this.jsonData
+
+      if(this.sharedsrv.userloggedon==false)
+      {
+      this._router.navigateByUrl(this.jsonData[0].landing) 
+      }
      
     const routes: any = [
   {path:'',   redirectTo: '/'+this.jsonData[0].login, pathMatch: 'full' },  

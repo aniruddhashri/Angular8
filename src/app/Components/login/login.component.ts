@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
           
           if(this.loginresp.status == "200")
           {
+            this.service.userloggedon=true
             if(this.loginresp.Data.usertype == "customer")
             {
               this._router.navigateByUrl('/'+this.service.jsonData[0].customer)
@@ -70,6 +71,7 @@ export class LoginComponent implements OnInit {
           } 
           else
           {
+            this.service.userloggedon=false
             this.dialog.open(DialogalertComponent, {
               width: '650px',
               height: '160px',
