@@ -1,0 +1,47 @@
+table {
+    width: 90%;
+    margin: 20px 21px 10px;
+    table-layout: fixed;
+   }
+
+   .filtercompo{
+       float: left;
+       position: fixed;
+       width:25%;
+       height: 100%;
+       padding-left: 0;
+       background: beige;
+       border-style: ridge;
+       top:56px;
+   }
+
+   .parentdiv{
+       float: right;
+       width: 75%;
+       top:56px;
+       position: relative;
+
+   }
+
+   th, td {
+    overflow: hidden;
+    width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+  }
+  
+  th{
+    text-align: center !important;
+  }
+
+  img{
+      width: 130px;
+      height: 130px;
+  }
+
+  .header{
+      position: fixed;
+      z-index: 10;
+      width: 100%;
+  }

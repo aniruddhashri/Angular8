@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable,OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
-import {Observable} from 'rxjs'
+import {BehaviorSubject, Observable} from 'rxjs'
 import {map,catchError} from 'rxjs/operators'
 import {regschema} from '../Components/registration/regschema'
 import {respfromDB} from '../Components/registration/resp'
@@ -9,17 +9,31 @@ import {LoginrespfrmDB} from '../Components/login/loginrespfrmDB'
 import {menuschema} from  '../Components/admin/Schemas/menuschema'
 import {DialogalertComponent} from '../Components/dialogalert/dialogalert.component'
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+
+import {AppConfig} from '../app.config'
+declare const Test:any;
 
 @Injectable({
   providedIn: 'root'
 })
-export class SharedServiceService {
+export class SharedServiceService{
   userdata:any
   menusch:menuschema
   userloggedon:boolean = false
   public cartdata:any[]=[]
-  constructor(private _http:HttpClient,public dialog: MatDialog) { }
+  public jsonData:any[]=[]
+  
+  private newUser = new BehaviorSubject<any>({
+    dishname: '',
+    price: ''
+  });
 
+  public sharedConfig: Object = null;
+
+  constructor(private _http:HttpClient,public dialog: MatDialog,public appconfig:AppConfig,public route:Router) { }
+
+  
   public register(data:regschema):Observable<any>{
   const headers1= new HttpHeaders().set('Access-Control-Allow-Origin', '*');
   headers1.append('Access-Control-Allow-Headers', 'Content-Type');
@@ -97,5 +111,13 @@ return this._http.get("/api/listing/check").pipe(
   public logout(): void{ 
     this.userloggedon = false
  }
+
+ public setFilterdInfo(user:any){
+  this.newUser.next(user);
+ }
+
+ public getFilteredInfo() {
+  return this.newUser.asObservable();
+}
 }
 

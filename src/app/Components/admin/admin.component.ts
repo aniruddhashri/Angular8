@@ -92,43 +92,49 @@ fileChangeEvent(fileInput: any) {
         this.imageError = null;
         if (fileInput.target.files && fileInput.target.files[0]) {
             // Size Filter Bytes
-            const max_size = 20971520;
+          //  const max_size_byte = 2097152;
             const allowed_types = ['image/png', 'image/jpeg'];
-            const max_height = 15200;
-            const max_width = 25600;
+           // const max_height = 15200;
+            //const max_width = 25600;
 
-            if (fileInput.target.files[0].size > max_size) {
-                alert('Maximum size allowed is ' + max_size / 1000 + 'Mb')
-
-                return false;
-            }
+            // if(fileInput.target.files[0].type == allowed_types[0] || fileInput.target.files[0].type == allowed_types[1])
+            // {
+            //   if (fileInput.target.files[0].size > max_size_byte) 
+            //   {
+            //       alert('Maximum size allowed is ' + max_size_byte/1048576 + 'Mb');
+            //       this.dishname = ""
+            //       this.price = null
+            //       this.dishimage = null
+            //       this.cardImageBase64 = null;
+            //       this.isImageSaved = false;
+            //       return false;
+            //   }
+            // }
+            //   else
+            //   {
+            //     alert('Only Image type PNG and JPEG is allowed for Uploading')
+            //     this.dishname = ""
+            //     this.price = null
+            //     this.dishimage = null
+            //     this.cardImageBase64 = null;
+            //     this.isImageSaved = false;
+            //         return false;
+            //   }
 
             const reader = new FileReader();
             reader.onload = (e: any) => {
                 const image = new Image();
                 image.src = e.target.result;
                 image.onload = rs => {
-                    const img_height = rs.currentTarget['height'];
-                    const img_width = rs.currentTarget['width'];
-
-                    if (img_height > max_height && img_width > max_width) {
-                        this.imageError =
-                            'Maximum dimentions allowed ' +
-                            max_height +
-                            '*' +
-                            max_width +
-                            'px';
-                        return false;
-                    } else {
+                  
                         const imgBase64Path = e.target.result;
-
                         this.cardImageBase64 = imgBase64Path;
                         this.isImageSaved = true;
-                    }
                 };
             };
 
             reader.readAsDataURL(fileInput.target.files[0]);
+            
         }
     }
 

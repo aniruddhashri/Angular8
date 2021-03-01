@@ -1,16 +1,21 @@
 <div *ngIf="this.sharedser.userloggedon">
+    <div>
 <div id="container">
-    <div id="Menubar" *ngIf="toggle1">
-            <div class="nav" (click)="route1()">
-                <img src="\assets\img\home.png"/>
-            </div>
-            <div class="nav" (click)="route('about')">
-            <img src="\assets\img\telephone.png"/>
-            </div>
-            <div class="nav">
-                <button class="btn btn-primary " (click)="logout()">Logout</button>
-            </div>
+   
+    <div style="width:100%" id="Menubar" *ngIf="toggle1">
+        <ul class="navbar-nav  mr-sm-2" style="float: right;">
+            <li  class="nav-item active">
+                    <img  (click)="route1()" src="\assets\img\home.png"/>
+            </li>
+            <li class="nav-item">
+                    <img (click)="route('about')" src="\assets\img\telephone.png"/>
+            </li>
+            <li>
+                <div class="nav">
+                    <button class="btn btn-primary " (click)="logout()">Logout</button>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>
-<div style="position: relative;"><button (click)="toggle()"></button></div>
 </div>

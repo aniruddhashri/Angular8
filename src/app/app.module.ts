@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,9 +17,21 @@ import {  PagenotfoundComponent} from './Components/pagenotfound/pagenotfound.co
 import { ApidataComponent } from './Components/apidata/apidata.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field' 
+import {MatFormFieldModule} from '@angular/material' 
 import { CartComponent } from './Components/cart/cart.component'
+import {ApiurlService} from '../apiurl.service'
+import { AppConfig }       from './app.config';
+import {MatTableModule} from '@angular/material/table'
+import {MatPaginatorModule,MatSort} from '@angular/material';
+import {MatSortModule} from '@angular/material/sort';
 
+
+
+//import {apiurl1} from '../apiurl'
+import { RouterModule } from '@angular/router';
+import { FiltercomponentComponent } from './filtercomponent/filtercomponent.component';
+import {SearchPipe} from "./search.pipe";
+import { MatDataFilterComponent } from './Components/mat-data-filter/mat-data-filter.component'
 
 @NgModule({
   declarations: [
@@ -35,19 +47,28 @@ import { CartComponent } from './Components/cart/cart.component'
     PagenotfoundComponent,
     ApidataComponent,
     DialogalertComponent,
-    CartComponent
+    CartComponent,
+    FiltercomponentComponent,
+    SearchPipe,
+    MatDataFilterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+     AppRoutingModule,
     FormsModule,ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
       ],
-  providers: [],
-  entryComponents: [DialogalertComponent],
+  providers: [ApiurlService,
+    AppConfig,
+  { provide: APP_INITIALIZER, useFactory: (config: AppConfig) => () => config.load(), deps: [AppConfig], multi: true }
+],
+  entryComponents: [LandingComponent,DialogalertComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

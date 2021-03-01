@@ -1,12 +1,21 @@
 #Menubar
 {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     background-color: #1267c7 !important;
     height: 100%;
     width: 100%;
+    float:right;
 }
 
+ul{
+    flex-direction: row;
+}
+li{
+    display: flex;
+    align-self: center;
+    padding-left: 15px;
+}
 #container
 {
     display: flex;
@@ -16,8 +25,7 @@
 }
 
 .nav{
-    margin: 15px;
-    left: auto;
+    margin: 8px;
     position: relative;
 }
 .nav:hover{
@@ -25,5 +33,5 @@
 }
 
 img{
-    height:30px
+    height:23px
 }

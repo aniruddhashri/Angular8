@@ -11,6 +11,11 @@ h5,h4,th,tr{
     text-align: center;
 }
 
+#imagepreview{
+    width: 250px;
+    height: 300px;
+}
+
 /*tr:nth-child(odd) { 
     background-color: rgb(105, 128, 148); 
 } 

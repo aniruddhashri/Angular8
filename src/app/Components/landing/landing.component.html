@@ -1,10 +1,13 @@
-<div class="container1">
+<div id="parentdiv" class="container1">
 <div id="Menubar" >
 <nav _ngcontent-gsh-c1="" class="navbar navbar-expand-lg navbar-white navbar-light" id="one" style="padding: 0%;position: sticky;">
-            
+    <!-- <div id="fileuploaddiv">
+        <input type="file" id="fileUploader"/>
+        <button id="savetoserver" (click)="savetoserver()">Save to Server</button>
+    </div> -->
         
-    <div class="">
-            <ul class="navbar-nav  mr-sm-2">
+    <div style="width:100%">
+            <ul class="navbar-nav  mr-sm-2" style="float: right;">
                 <li  class="nav-item active">
                     <button class="btn btn-outline btn-md f ml-2" type="button" (click)="register()">Register</button>
                 </li>
@@ -14,10 +17,9 @@
             </ul>
         </div>
     </nav>
-   
+       
     </div>
     <marquee _ngcontent-nxf-c4="" direction="left" onmouseleave="this.start();" onmouseover="this.stop();" style="background-color:white;">
         <div _ngcontent-nxf-c4="" class="marqueeStyling"> <b>Hotel Management Project with Angular 8 as Frontend and Node JS as Backend</b>
         </div></marquee>
-    
 </div>

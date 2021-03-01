@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   constructor(private _router:Router,private service:SharedServiceService,public dialog: MatDialog,private formBuilder: FormBuilder) { }
   ngOnInit() {
   this.userLoginForm = this.formBuilder.group({
-  email1: new FormControl('', Validators.required),
+  email: new FormControl('', [Validators.required,Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
   password1: new FormControl('', Validators.required)
 })
 
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
 
   register()
   {
-    this._router.navigateByUrl('/register')
+    this._router.navigateByUrl('/'+this.service.jsonData[0].register)
   }
 
   login()
@@ -61,11 +61,11 @@ export class LoginComponent implements OnInit {
           {
             if(this.loginresp.Data.usertype == "customer")
             {
-              this._router.navigateByUrl('/customer')
+              this._router.navigateByUrl('/'+this.service.jsonData[0].customer)
             }
             else if(this.loginresp.Data.usertype == "manager")
             {
-              this._router.navigateByUrl('/manager')
+              this._router.navigateByUrl('/'+this.service.jsonData[0].manager)
             }
           } 
           else

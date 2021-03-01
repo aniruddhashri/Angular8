@@ -12,10 +12,10 @@
             </div>
             <div class="col-md-5">
                 <ng-container *ngIf="isImageSaved">
-                            <img [src]="cardImageBase64" />
+                            <img id="imagepreview" [src]="cardImageBase64" />
                         </ng-container>
                      
-                <input type="file" class="form-control mb-4" required placeholder="Image" [(ngModel)]="dishimage" name="dishimage" (change)="fileChangeEvent($event)" />
+                <input type="file" class="form-control mb-4" required placeholder="Image" accept=".png, .jpeg" [(ngModel)]="dishimage" name="dishimage" (change)="fileChangeEvent($event)" />
             </div>
             <div id="btndiv"  class="col-md-1">
                 <button class="btn btn-primary" [disabled]="myForm.form.invalid" (click)="AddMenu()">Add</button>

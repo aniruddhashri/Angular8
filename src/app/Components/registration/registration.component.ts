@@ -33,7 +33,7 @@ export class RegistrationComponent implements OnInit {
   }
   login()
   {
-    this._router.navigateByUrl('/login')
+    this._router.navigateByUrl('/'+this.sharedsvc.jsonData[0].login)
   }
   register()
   {

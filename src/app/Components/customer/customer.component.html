@@ -15,7 +15,8 @@
                     <th width="20%"></th>
                     <th width="20%"></th>
                 </thead>
-                <tr *ngFor="let data1 of menudata1;">
+                <tr *ngFor="let data1 of menudata1 | search: [dishnameflr.value, priceflr.value]: ['dishname','price']">
+
                     <td>{{data1.dishname}}</td>
                     <td>{{data1.price}} $</td>
                     <td><img [src]=data1.dishimg height="120px" alt=""></td>

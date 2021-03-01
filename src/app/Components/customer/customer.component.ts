@@ -23,10 +23,20 @@ export class CustomerComponent implements OnInit {
   imageError: string;
   isImageSaved: boolean;
   cardImageBase64: string;
+  filtereddata : any = ""
+  dishnameflr: any ="";
+  priceflr: any ="";
+  filterobj:any = ""
 
+  
 
   constructor(public sharedser: SharedServiceService,public _router:Router) { }
 
+  callFunction(e) {
+    this.dishnameflr = e.dishname;
+    this.priceflr = e.price
+    this.filterobj = {dishname:e.dishname,price:e.price}
+  }
   ngOnInit() {
     try{ 
     this.userdata1 = this.sharedser.userdata
@@ -41,6 +51,14 @@ export class CustomerComponent implements OnInit {
         this.menudata1 = resp.dish
        })
        }
+       try{
+
+        this.sharedser.getFilteredInfo().subscribe((resp)=>{
+          this.filtereddata = resp
+          })
+       }
+       catch(e1)
+       {}
   }
 
   addtocart(i)

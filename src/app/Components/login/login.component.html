@@ -7,10 +7,12 @@
    
     <div class= "col-md-3">
         <div class="row">
-            <input type="email" class="form-control mb-4" required autocomplete="on" placeholder="E-Mail" name="email" [(ngModel)]="email"/>
+            <input type="email" email class="form-control mb-4" required autocomplete="on" placeholder="E-Mail" name="email" [(ngModel)]="email"/>
+            <!-- <div *ngIf="myForm.form.invalid &&myForm.form.email!=''">Email is invalid</div> -->
          </div>
         <div class="row">
             <input type="password" class="form-control mb-4" [type]="isTextFieldType ? 'text' : 'password'" required placeholder="Password" name="password" [(ngModel)]="password" />
+            <!-- <button (click)="togglePasswordFieldType()"class="fa fa-eye-slash"> </button> -->
         </div>
     </div>
    
