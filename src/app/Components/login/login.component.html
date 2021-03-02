@@ -1,23 +1,24 @@
 <!doctype html>
 <div class="logincontainer">
-<form #myForm="ngForm" class="border-light p-5">
+<form #myForm="ngForm" class="border-light p-5 form-horizontal">
     <h4>Welcome</h4> 
     <br>
 <div class="container justify1" >
    
     <div class= "col-md-3">
-        <div class="row">
+        <div>
             <input type="email" email class="form-control mb-4" required autocomplete="on" placeholder="E-Mail" name="email" [(ngModel)]="email"/>
             <!-- <div *ngIf="myForm.form.invalid &&myForm.form.email!=''">Email is invalid</div> -->
          </div>
-        <div class="row">
+        <div>
             <input type="password" class="form-control mb-4" [type]="isTextFieldType ? 'text' : 'password'" required placeholder="Password" name="password" [(ngModel)]="password" />
-            <!-- <button (click)="togglePasswordFieldType()"class="fa fa-eye-slash"> </button> -->
+            <span [class]="isTextFieldType ?'fa fa-fw fa-eye field-icon':'fa fa-fw fa-eye-slash field-icon'" (click)="togglePasswordFieldType()"></span>
+
         </div>
     </div>
    
     <div id="btndiv" class= "col-md-3">
-        <button class="btn btn-primary" style="opacity: 1;" [disabled]="myForm.form.invalid" (click)="login()">Login</button>
+        <button class="btn btn-primary" [disabled]="myForm.form.invalid" (click)="login()">Login</button>
         <button class="btn btn-primary" style="margin:10px;position: relative;" (click)="register()">Register</button>
     </div>
 </div>

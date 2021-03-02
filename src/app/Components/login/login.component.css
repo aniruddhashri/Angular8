@@ -41,3 +41,7 @@ h4{
     color: floralwhite;
 }
 
+.field-icon{
+    float: right;
+    margin-top: -50px;
+}
