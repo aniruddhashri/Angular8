@@ -11,6 +11,10 @@ console.log("Listening to 3000 port");
  const mongoose  = require("mongoose");
  const dotenv = require("dotenv");
 
+app.get("/", function(req, res) {
+  res.send("Hello Worlxxxxd!");
+});
+
 const listinroutes = require("./routes/routing");
 
 dotenv.config();
