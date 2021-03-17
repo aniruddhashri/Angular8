@@ -2,12 +2,12 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main":"app.js",
   "scripts": {
-"dev": "npm start",
-"start": "nodemon app.js",
-"build": "npm build",
-"test": "npm test --env=jsdom"
+"dev":"npm start",
+"start":"nodemon app.js",
+"build":"npm build",
+"test":"npm test --env=jsdom"
 },
   "author": "",
   "license": "ISC",
