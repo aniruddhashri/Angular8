@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
 "dev": "npm start",
-"start": "serve -s build",
+"start": "nodemon app.js",
 "build": "npm build",
 "test": "npm test --env=jsdom"
 },
