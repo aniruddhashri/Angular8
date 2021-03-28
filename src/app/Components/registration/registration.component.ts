@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
+import {FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {SharedServiceService} from '../../Services/shared-service.service'
 import {regschema} from './regschema'
@@ -11,15 +12,23 @@ import {regschema} from './regschema'
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent implements OnInit {
-  //regsch:regschema;
+export class RegistrationComponent implements OnInit{
+ 
+  username:string= '';
+  password:string= '';
+  cnfpassword:string= '';
+  address:string= '';
+  mblno:string= '';
+  email:string= '';
+// ngForm = new FormGroup({
+//   username : new FormControl('', [Validators.required]),
+//     password : new FormControl('', [Validators.required]),
+//     cnfpassword : new FormControl('', [Validators.required]),
+//     address : new FormControl('', [Validators.required]),
+//     mblno : new FormControl('', [Validators.required]),
+//     email : new FormControl('', [Validators.required]),
+//   })
 
-  username:string;
-  password:string;
-  cnfpassword:string;
-  address:string;
-  mblno:string;
-  email:string;
   rdusertype:string
 
   message:string
@@ -35,6 +44,7 @@ export class RegistrationComponent implements OnInit {
   {
     this._router.navigateByUrl('/'+this.sharedsvc.jsonData[0].login)
   }
+
   register()
   {
     this.regsch = {
@@ -43,18 +53,14 @@ export class RegistrationComponent implements OnInit {
       address:this.address,
       mobile:this.mblno,
       email:this.email,
-      usertype:this.rdusertype
+      usertype:"customer"
     }
-    console.log(this.regsch)
    
    this.sharedsvc.register(this.regsch)
    .subscribe(
      data=>{
       this.response = data;
-      console.log(this.response)
       this.message = this.response.msg
    })
-
   }
-
 }

@@ -3,14 +3,36 @@
     position: relative;
 } */
 
+form{
+    top:32px;
+    position: relative;
+}
 .container{
-    border-bottom-style:inset
+    border-bottom-style:inset;
+    margin:0px;
+    padding:0px;
 }
 
 h5,h4,th,tr{
     text-align: center;
 }
 
+h4{
+    position: relative;
+}
+
+.sidepannel{
+    float: left;
+    z-index: 4;
+    position: fixed;
+    background-color: cornflowerblue;
+    height: 100%;
+    width: 15%;
+}
+
+.maincontainer{
+padding-left:16%;    
+}
 /*tr:nth-child(odd) { 
     background-color: aliceblue; 
 } 
@@ -42,3 +64,99 @@ tr:nth-child(even) {
 .sidebar-header  div{
     padding:10px;
 }
+
+.viewcart{
+    margin-left: -15px;
+    float: right;
+}
+
+.divspacer{
+    border-color: aliceblue;
+    margin: 5px;
+    padding: 10px;
+    border-style: groove;
+    border-color: cornflowerblue;
+    }
+.content-spacer
+{
+    border-width: 7px;
+    border-radius: 35px;
+    padding-left: 0px;
+}
+
+.btn1{
+    margin-right: 15px;
+    position: initial;
+    float: right;
+}
+/* 
+.seperator{
+    border-right-style: groove;
+    border-right-color: cornflowerblue;
+} */
+.clsdish{
+    float: left;
+    border-style: groove;
+    border-radius: 20px;
+    margin-right: 10px;
+    padding-right: 0px;
+    padding-left: 0px;
+    height: 15px;
+    width: 15px;
+    position: relative;
+}
+
+.veg{
+    border-color: darkgreen;
+    background-color: #4CAF50;
+    border-style: solid;
+}
+.nonveg{
+    border-style: solid;
+    border-color: darkred;
+    background-color: red;   
+}
+
+.clsdishname{
+    font-size: 1.22rem;
+    font-weight: 500;
+    color: #282c3f;
+    margin-top: 4px;
+    margin-left: 10px;
+}
+
+.rupee{
+    margin-left: 10px;
+    margin-top: 4px;
+}
+.padspacer{
+    padding-top: 10px;
+}
+
+.space1
+{
+    /* border-bottom:lightgrey;
+    border-bottom-style: ridge; */
+    width: 100%;
+    margin:0px;
+    padding-top: 100px;
+}
+
+app-header{
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+}
+
+img{
+    border-style:groove;
+}
+/* 
+.parent1{
+    height: 100%;
+    background-image: URl('assets/img/hotel1.jpg');
+    width: 100%;
+    position: absolute;
+    background-repeat: round;
+    margin: 0px;
+} */

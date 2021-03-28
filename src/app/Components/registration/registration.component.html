@@ -1,35 +1,42 @@
 
  <div class="regcontainer">
-<form #myForm="ngForm" class="border border-light p-5">
+<form #myForm="ngForm" class="">
     <h4><b>REGISTRATION</b></h4> 
     <br>
 <div class="container justify1" > 
     <div class= "col-md-6">
         <div class="row">
             <input type="text" class="form-control mb-4" required autocomplete="off" placeholder="Username" name="username" [(ngModel)]="username"/>
+            <!-- <span class="validationSpan" *ngIf="(username!='')">User Name required </span> -->
          </div>
         <div class="row">
             <input type="password" class="form-control mb-4" required autocomplete="off" placeholder="Password" name="password" [(ngModel)]="password" />
+            <!-- <span class="validationSpan" *ngIf="(password!='')">Password required </span> -->
         </div>
 
         <div class="row">
             <input type="password" class="form-control mb-4" required autocomplete="off" placeholder="Confirm Password" name="cnfpassword" [(ngModel)]="cnfpassword" />
+            <!-- <span class="validationSpan" *ngIf="(cnfpassword!='')">Confirm Password required </span>
+            <span class="validationSpan" *ngIf="((password!='' && (cnfpassword!='') && password!=cnfpassword))">Password and Confirm Password Didnot matched</span> -->
         </div>
 
         <div class="row">
             <input type="text" class="form-control mb-4" required placeholder="Address" name="address" [(ngModel)]="address" />
+            <!-- <span class="validationSpan" *ngIf="(address!='')">Address required </span> -->
         </div>
 
 
         <div class="row">
             <input type="number" class="form-control mb-4" maxlength="10" required placeholder="Mobile No" name="mblno" [(ngModel)]="mblno" />
+            <!-- <span class="validationSpan" *ngIf="(mblno!='')">Mobile Number required </span> -->
         </div>
 
         <div class="row">
             <input type="email" class="form-control mb-4" required placeholder="Email Id" name="email" [(ngModel)]="email" />
+            <!-- <span class="validationSpan" *ngIf="(email!='')">Email required </span> -->
         </div>
     </div>
-    <div class= "col-md-6">
+    <!-- <div class= "col-md-6">
         <label>Register as</label>
         <div id="radiodiv">
             <input type="radio" id="rd1" name="rdusertype" required [(ngModel)]="rdusertype" value="customer"/>
@@ -37,16 +44,16 @@
             <input type="radio" name="rdusertype" id="rd2" required [(ngModel)]="rdusertype" value="manager"/>
             <label for="rd2">Admin</label>
         </div>   
-    </div>
+    </div> -->
     <div id="btndiv" class="col-md-6">
         <button class="btn btn-primary" [disabled]="myForm.form.invalid || (password!=cnfpassword)" (click)="register()">REGISTER</button>    
         <button class="btn btn-primary" style="margin:10px;position: relative;" (click)="login()">Login</button>
     </div>
 </div>
 
-<h4 appHighlight>{{this.message}}</h4>
-<div appHighlight *ngIf="password!='' && cnfpassword!='' && (password!=cnfpassword)">
+ <h4 appHighlight>{{this.message}}</h4>
+<!--<div appHighlight *ngIf="password!='' && cnfpassword!='' && (password!=cnfpassword)">
 Password and Confirm Password Did not matched
-</div>
+</div> -->
 </form>
 </div>

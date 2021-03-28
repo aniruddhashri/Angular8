@@ -1,40 +1,51 @@
-<div class="spacer">
-          <div class="container">
-            <div class="row mt-5">
+<app-header></app-header> 
+<div class="parent">
+  <form #myForm="ngForm" class="border border-light p-4">
+          <div class="container p1">
+            <div><button class="btn btn-primary" (click)="backtomain()" >Back</button></div>
+            <div class="row">
               <div class="col-lg-9">
                 <div *ngIf="cartData.length>0;else other_content" class="row shop-listing">
                   <table class="table shop-table">
                     <tr>
-                      <th class="b-0">Name</th>
-                      <th class="b-0">Price</th>
-                      <th class="b-0">Image</th>
-                      <th class="b-0">Quantity</th>
-                      <th class="b-0 text-right">Total Price</th>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Image</th>
+                      <th width="15%">Quantity</th>
+                      <th class="text-right">Total Price</th>
+                      <th class="text-right"></th>
                     </tr>
-                    <tr *ngFor="let item of cartData">
+                    <tr *ngFor="let item of cartData,let i = index">
                       <td>{{ item.dishname }}</td>
-                      <td>{{ item.price }}</td>
+                      <td>&#x20B9; {{ item.price }}</td>
                       <td><img [src]=item.dishimg height="120px" alt=""></td>
                       <td>
-                        <!-- <button class="btn btn-primary btn-sm" (click)="_increamentQTY(item.productId._id,1)">+</button> -->
+                        <button class="btn btn-primary btn-sm" (click)="changeQty(i,1)">+</button>
                         {{ item.quantity }}
-                        <button class="btn btn-primary btn-sm">-</button>
+                        <button class="btn btn-primary btn-sm" (click)="changeQty(i,-1)">-</button>
                       </td>
                       <td class="text-right">
-                        <h5 class="font-medium m-b-30">{{ item.length }}</h5>
+                        <h5 class="font-medium m-b-30">{{ item.totalPrice }}</h5>
+                      </td>
+                      <td>
+                        <button class="btn btn-info btn1" (click)="deleterow(i)">Remove</button>
                       </td>
                     </tr>
-                    <!-- <tr>
-                      <td colspan="3" align="right">Subtotal :{{ carts.subTotal }}</td>
+                    <tr>
+                      <td colspan="3" align="right">{{finalPrice}} </td>
                       <td colspan="4" align="right">
-                        <button class="btn btn-danger" (click)="_emptyCart()">Empty Cart</button>
+                        <button class="btn btn-danger" (click)="emptyCart()">Empty Cart</button>
                       </td>
-                    </tr> -->     
+                      <td colspan="4" align="right">
+                        <button class="btn btn-primary" (click)="checkout()">Checkout</button>
+                      </td>
+                    </tr>
                   </table>
                 </div>
                 <ng-template #other_content><p> Cart is Empty</p></ng-template>
-                <div><button (click)="backtomain()" >Back</button></div>
+              
               </div>
             </div>
           </div>
+          </form> 
         </div>

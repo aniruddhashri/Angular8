@@ -10,12 +10,100 @@
 h5,h4,th,tr{
     text-align: center;
 }
+h4{
+    padding-top: 50px;
+}
 
 #imagepreview{
     width: 250px;
     height: 300px;
 }
 
+.form-control{
+    height:32px;
+    padding:0px;
+}
+
+
+.btn1{
+    margin-right: 15px;
+    position: initial;
+    float: right;
+}
+.f1{
+    padding-left: 10px;
+}
+
+.divspacer{
+    border-color: aliceblue;
+    margin: 5px;
+    padding: 10px;
+    border-style: groove;
+    border-color: cornflowerblue;
+    border-radius: 35px;
+    }
+.content-spacer
+{
+    border-width: 7px;
+    border-radius: 35px;
+    padding-left: 0px;
+}
+
+.veg{
+    border-color: darkgreen;
+    background-color: #4CAF50;
+    border-style: solid;
+}
+.nonveg{
+    border-style: solid;
+    border-color: darkred;
+    background-color: red;   
+}
+
+.clsdish{
+    float: left;
+    border-style: groove;
+    border-radius: 20px;
+    margin-right: 10px;
+    padding-right: 0px;
+    padding-left: 0px;
+    height: 15px;
+    width: 15px;
+    position: relative;
+}
+
+.rupee{
+    margin-left: 10px;
+    margin-top: 4px;
+}
+.padspacer{
+    padding-top: 20px;
+}
+
+.space1
+{
+    width: 100%;
+    padding-top: 10px;
+}
+
+
+.clsdishname{
+    font-size: 1.22rem;
+    font-weight: 500;
+    color: #282c3f;
+    margin-top: 4px;
+    margin-left: 10px;
+}
+
+app-header{
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+}
+
+img{
+    border-style:groove;
+}
 /*tr:nth-child(odd) { 
     background-color: rgb(105, 128, 148); 
 } 

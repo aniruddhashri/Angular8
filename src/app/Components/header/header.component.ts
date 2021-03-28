@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SharedServiceService } from 'src/app/Services/shared-service.service';
+import { SharedServiceService } from '../../Services/shared-service.service';
 
 @Component({
   selector: 'app-header',
@@ -15,12 +15,18 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
    // alert(this.sharedser.userloggedon)
-  if(!this.sharedser.userloggedon==true)
+  // if(!this.sharedser.userloggedon==true)
+  // {
+  //   this.sharedser.logout();
+  //   this._router.navigateByUrl('/');
+  // }
+  }
+
+  viewcart()
   {
-    this.sharedser.logout();
-    this._router.navigateByUrl('/');
+    this._router.navigateByUrl('/cart')
   }
-  }
+  
   toggle()
   {
     this.toggle1 = ! this.toggle1
@@ -39,12 +45,13 @@ export class HeaderComponent implements OnInit {
   
   logout()
   {
-    if(confirm('Session will be Terminated, Are You sure want to Logout'))
+    if(confirm('Session will be Terminated, Are You sure want to Logout ?'))
     {
     this.sharedser.logout();
     this._router.navigateByUrl('/');
     }
 
   }
-
+  
+  
 }

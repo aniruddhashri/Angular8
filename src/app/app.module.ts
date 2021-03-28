@@ -25,13 +25,20 @@ import {MatTableModule} from '@angular/material/table'
 import {MatPaginatorModule,MatSort} from '@angular/material';
 import {MatSortModule} from '@angular/material/sort';
 
-
-
-//import {apiurl1} from '../apiurl'
-import { RouterModule } from '@angular/router';
+//import { RouterModule } from '@angular/router';
 import { FiltercomponentComponent } from './filtercomponent/filtercomponent.component';
-import {SearchPipe} from "./search.pipe";
-import { MatDataFilterComponent } from './Components/mat-data-filter/mat-data-filter.component'
+import {TableFilterPipe} from "./table-Filter.pipe";
+import { MatDataFilterComponent } from './Components/mat-data-filter/mat-data-filter.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+//import { CheckoutComponent } from './Components/checkout/checkout.component'
 
 @NgModule({
   declarations: [
@@ -49,8 +56,11 @@ import { MatDataFilterComponent } from './Components/mat-data-filter/mat-data-fi
     DialogalertComponent,
     CartComponent,
     FiltercomponentComponent,
-    SearchPipe,
-    MatDataFilterComponent
+    TableFilterPipe,
+    MatDataFilterComponent,
+   // CheckoutComponent,
+    // MyDashboardComponent,
+    // MatnavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +72,16 @@ import { MatDataFilterComponent } from './Components/mat-data-filter/mat-data-fi
     MatFormFieldModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule
       ],
   providers: [ApiurlService,
     AppConfig,
@@ -71,4 +90,9 @@ import { MatDataFilterComponent } from './Components/mat-data-filter/mat-data-fi
   entryComponents: [LandingComponent,DialogalertComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(){
+ 
+  } 
+  
+}

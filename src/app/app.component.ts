@@ -1,5 +1,11 @@
-import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+import { SharedServiceService } from './Services/shared-service.service';
+import { HttpClient } from '@angular/common/http';
+
 //import {AppRoutingModule} from "./app-routing.module"
 
 @Component({
@@ -9,9 +15,9 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   toggle1:boolean = true
-
+  
   constructor(private route1:Router){}
-  //constructor(private route1:Router,public routemod:AppRoutingModule){}
+
 
    route(path)
   {

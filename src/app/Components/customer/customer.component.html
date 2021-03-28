@@ -1,28 +1,82 @@
  <app-header></app-header> 
-<form #myForm="ngForm" class="border border-light p-4">
-    <h4>Welcome {{this.username}} </h4> 
-    <!--<br>-->
-    <button (click)="viewcart()">
-        View Cart
-    </button>
-<div class="container justify1" > 
+<div class="parent">
+ <div class="sidepannel" *ngFor="let data1 of menudata1">
+    <div class= "row space1">
+        <div class="col-md-12">
+            <select class="form-control mb-4" name="dishtype" [(ngModel)]="dishtype">
+                <option value = ""></option>
+                <option value = "Veg">Veg</option>
+                <option value = "Non-Veg">Non-Veg</option>
+            </select>
+        </div>
+    </div>    
+ </div>
+<div class="maincontainer">
+ <form #myForm="ngForm" class="border border-light p-4">
+    <div class="row">
+        <div class="col-md-11">
+            <h4 appHighlight>Welcome {{this.username}} </h4> 
+        </div>
+        <div *ngIf="this.sharedser.cartdata.length>0" class= "viewcart">
+            <button class="btn btn-primary" (click)="viewcart()">
+            View Cart {{this.sharedser.cartdata.length}}  
+            </button>
+        </div>
+</div>
+<div class="row">
+    <MARQUEE behavior="scroll"  direction="left" width="100%" style="border-style: ridge;">
+        <div style="display: contents;" *ngFor="let data1 of menudata1">
+        <img [src]=data1.dishimg height="100px" style="margin: 10px;" width="200px" alt="">
+        </div>
+        </MARQUEE>
+    </div>
     
-        <div *ngIf="menudata1.length>0" class="table-responsive">
+<div class="container justify1" > 
+
+    <div class="padspacer">
+        <div class="content-spacer" *ngFor="let data1 of menudata1  | tableFilter: dishtype; let i = index">
+            <div class="row divspacer">
+                <div class="col-md-4 seperator">
+                    <div [ngClass]="data1.dishtype == 'Veg' ? 'veg clsdish' : 'nonveg clsdish'"></div>
+                    <img [src]=data1.dishimg height="100px" width="50%" alt="">
+                </div>
+                <div class="col-md-8">
+                    <span class="clsdishname">{{data1.dishname}}</span>
+                    <div class="row padspacer">
+                        <div class="col-md-9">
+                        <span class="rupee">&#x20B9; {{data1.price}}</span>
+                        </div>
+                        <!-- <button class="btn btn-info btn1" (click)="addtocart(data1)">Add</button> -->
+                        <div class="col-md-3">
+                            <button class="btn btn-primary btn-sm" (click)="changeQty(data1.indexvalue,1)">+</button>
+                            {{ data1.quantity }}
+                            <button class="btn btn-primary btn-sm" (click)="changeQty(data1.indexvalue,-1)">-</button>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+        <!-- <div *ngIf="menudata1.length>0" class="table-responsive">
             <table class="table-bordered"  width="100%">
                 <thead>
                     <th width="30%">Dish Name</th>
-                    <th width="30%">Price</th>
-                    <th width="20%"></th>
-                    <th width="20%"></th>
+                    <th width="10%">Price</th>
+                    <th width="10%">Type</th>
+                    <th width="38%"></th>
+                    <th width="2%"></th>
                 </thead>
-                <tr *ngFor="let data1 of menudata1">
+                <tr *ngFor="let data1 of menudata1  | tableFilter: dishtype">
 
                     <td>{{data1.dishname}}</td>
                     <td>{{data1.price}} $</td>
+                    <td>{{data1.dishtype}}</td>
                     <td><img [src]=data1.dishimg height="120px" alt=""></td>
-                    <td><button class="btn btn-info" style="position: initial;" (click)="addtocart(data1)">Add to cart</button></td>
+                    <td><button class="btn btn-info" style="position: initial;" (click)="addtocart(data1)">Add</button></td>
                 </tr>
             </table>
-        </div>
+        </div> -->
     </div>
     </form> 
+</div>
+</div>

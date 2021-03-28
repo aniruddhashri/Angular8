@@ -22,7 +22,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/env.json" 
+              "src/env.json",
+	      "src/Notallowed.html" 
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.css",            
@@ -65,8 +66,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Project1:build",
-            "proxyConfig": "proxy.config.json"
+            "browserTarget": "Project1:build"
           },
           "configurations": {
             "production": {

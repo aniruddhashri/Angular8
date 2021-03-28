@@ -8,9 +8,14 @@ import { AboutComponent } from './Components/about/about.component';
 import { CartComponent } from './Components/cart/cart.component';
  import { LandingComponent } from './Components/landing/landing.component'
  import {  PagenotfoundComponent} from './Components/pagenotfound/pagenotfound.component'
+ import { CheckoutComponent } from './Components/checkout/checkout.component'
 //import { MatDataFilterComponent } from "./Components/mat-data-filter/mat-data-filter.component";
 import { HttpClient } from '@angular/common/http';
 import { SharedServiceService } from './Services/shared-service.service';
+
+
+//import { MyDashboardComponent } from './my-dashboard/my-dashboard.component';
+//import { MatnavigationComponent } from './matnavigation/matnavigation.component';
 
 
 const routes: any = [
@@ -22,8 +27,11 @@ const routes: any = [
   {path:'cart',component:CartComponent},
   {path:'register',component:RegistrationComponent},
   {path:'about',component:AboutComponent},
+  {path:'checkout',component:CheckoutComponent},
+  //{path:'dashboard',component:MyDashboardComponent}, // Practice
+  //{path:'matnav',component:MatnavigationComponent}, // Practice
 //  {path:'matCompo',component:MatDataFilterComponent},
-  {path:'**',component:PagenotfoundComponent},
+ {path:'**',component:PagenotfoundComponent}
 ];
 
 
@@ -41,10 +49,10 @@ export class AppRoutingModule{
       this.jsonData.push(response)
       this.sharedsrv.jsonData = this.jsonData
 
-      if(this.sharedsrv.userloggedon==false)
-      {
-      this._router.navigateByUrl(this.jsonData[0].landing) 
-      }
+      // if(this.sharedsrv.userloggedon==false)
+      // {
+      // this._router.navigateByUrl(this.jsonData[0].landing) 
+      // }
      
     const routes: any = [
   {path:'',   redirectTo: '/'+this.jsonData[0].login, pathMatch: 'full' },  
@@ -55,6 +63,7 @@ export class AppRoutingModule{
   {path:this.jsonData[0].cart,component:CartComponent},
   {path:this.jsonData[0].register,component:RegistrationComponent},
   {path:this.jsonData[0].about,component:AboutComponent},
+  {path:'checkout',component:CheckoutComponent},
   {path:'**',component:PagenotfoundComponent}, 
   
     ];

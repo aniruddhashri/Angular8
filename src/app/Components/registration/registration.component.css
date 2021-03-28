@@ -22,12 +22,13 @@ label{
 
 h5{
     text-align: center;
-    color:red
+    color:red;
 }
 
 h4{
     text-align: center;
     color: antiquewhite;
+    padding-top: 25px;
 }
 
 a{
@@ -36,9 +37,18 @@ a{
 }
 .regcontainer{
     background-image: URl('assets/img/hotel2.jpg');
-    width: 98%;
+    width: 100%;
     position: absolute;
     background-repeat: round;
-    margin: 5px;
-    height: 98%;
+    /* margin: 5px;
+    height: 98%; */
+    height :100%;
+}
+.validationSpan{
+    width: 100%;
+    
+    margin-top: -20px;
+    background-color: red;
+    color: black;
+    margin-bottom: 3px;
 }

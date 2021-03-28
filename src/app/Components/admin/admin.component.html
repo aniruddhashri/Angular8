@@ -1,45 +1,75 @@
 <app-header></app-header>
 <form #myForm="ngForm" class="border border-light p-4">
-    <p appHighlight>Welcome Admin {{this.username}} </p> 
-    <h5>{{responseMessage}}</h5>
-    <div class="container" > 
+    <h4 appHighlight>Welcome {{this.username}} </h4> 
+    <h5 appHighlight>{{responseMessage}}</h5>
+    <div class="container justify1" > 
         <div class= "row">
             <div class="col-md-4">
-                <input type="text" class="form-control mb-4" required autocomplete="off" placeholder="Name of Dish" name="dishname" [(ngModel)]="dishname"/>
+                <input type="text" class="form-control mb-4 f1" required autocomplete="off" placeholder="Name of Dish" name="dishname" [(ngModel)]="dishname"/>
             </div>
             <div class="col-md-2">
-                <input type="number" class="form-control mb-4" required autocomplete="off" placeholder="Price" name="price" [(ngModel)]="price" />
-            </div>
-            <div class="col-md-5">
-                <ng-container *ngIf="isImageSaved">
-                            <img id="imagepreview" [src]="cardImageBase64" />
-                        </ng-container>
-                     
-                <input type="file" class="form-control mb-4" required placeholder="Image" accept=".png, .jpeg" [(ngModel)]="dishimage" name="dishimage" (change)="fileChangeEvent($event)" />
-            </div>
-            <div id="btndiv"  class="col-md-1">
-                <button class="btn btn-primary" [disabled]="myForm.form.invalid" (click)="AddMenu()">Add</button>
+                <input type="number" class="form-control mb-4 f1" required autocomplete="off" placeholder="Price" name="price" [(ngModel)]="price" />
             </div>
         </div>
+        <div class= "row">
+            <div class="col-md-4">
+                <select class="form-control mb-4 f1" name="dishtype" [(ngModel)]="dishtype">
+                    <option value = "">Select Type</option>
+                    <option value = "Veg">Veg</option>
+                    <option value = "Non-Veg">Non-Veg</option>
+                </select>
+            </div>
+            <div class="col-md-5">
+                     
+                <input type="file" class="form-control" required placeholder="Image" accept=".png, .jpeg" [(ngModel)]="dishimage" name="dishimage" (change)="fileChangeEvent($event)" />
+            </div>
+            <div id="btndiv"  class="col-md-1">
+                <button class="btn btn-primary" [disabled]="(dishtype.toString()!='Veg' && dishtype.toString()!='Non-Veg') || myForm.form.invalid" (click)="AddMenu()">Add</button>
+            </div>
+        </div>
+        <ng-container *ngIf="isImageSaved">
+            <img id="imagepreview" [src]="cardImageBase64" />
+        </ng-container>
+
         
     </div>
     
-    <div *ngIf="menudataresp.length>0" class="table-responsive">
+    <!-- <div *ngIf="menudataresp.length>0" class="table-responsive">
         <table class="table-bordered"  width="100%">
             <thead>
                 <th width="30%">Dish Name</th>
-                <th width="30%">Price</th>
+                <th width="10%">Price</th>
+                <th width="10%">Type</th>
                 <th width="38%"></th>
                 <th width="2%"></th>
             </thead>
             <tr *ngFor="let data1 of menudataresp;let i = index">
                 <td>{{data1.dishname}}</td>
-                <td>{{data1.price}} $</td>
+                <td>&#x20B9; {{data1.price}}</td>
+                <td>{{data1.dishtype}}</td>
                 <td><img [src]=data1.dishimg height="120px" alt=""></td>
                 <td><button style="position: initial;" (click)="deleterow(i)">X</button></td>
             </tr>
         </table>
-    </div>
-    
+    </div> -->
+
+    <div *ngIf="menudataresp.length>0" class="padspacer container justify1">
+        <div class="content-spacer" *ngFor="let data1 of menudataresp  | tableFilter: dishtype; let i = index">
+            <div class="row divspacer">
+                <div class="col-md-4 seperator">
+                    <div [ngClass]="data1.dishtype == 'Veg' ? 'veg clsdish' : 'nonveg clsdish'"></div>
+                    <img [src]=data1.dishimg height="100px" width="50%" alt="">
+                </div>
+                <div class="col-md-8">
+                    
+                    <span class="clsdishname">{{data1.dishname}}</span>
+                    <div>
+                        <span class="rupee">&#x20B9; {{data1.price}}</span>
+                        <button class="btn btn-info btn1" (click)="deleterow(i)">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
 </form> 
 

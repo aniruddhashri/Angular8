@@ -10,7 +10,9 @@ import { PagenotfoundComponent } from '../pagenotfound/pagenotfound.component';
 import $ from "jquery"
 import {SharedServiceService} from "../../Services/shared-service.service"
 import { HttpClient } from "@angular/common/http";
+import disableDevtool from 'disable-devtool';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -30,13 +32,21 @@ export class LandingComponent implements OnInit {
   regURL:string 
   jsonData:any[] = []
   
-  constructor(private _router:Router, private httpClient: HttpClient, private sharedsrv:SharedServiceService) { } 
-
+  constructor(private _router:Router, private httpClient: HttpClient, private sharedsrv:SharedServiceService) { 
+    // disableDevtool({
+    //   ondevtoolopen(){
+    //   alert("Developer tool not allowed")
+    //   window.location.href = "Notallowed.html"
+      // this._router.navigateByUrl('/login')
+    //   }
+    // })
+    
+  } 
 
   getrouting() {
     try{
     this._router.resetConfig([
-  {path:'',   redirectTo: '/'+this.jsonData[0].landing, pathMatch: 'full' },
+  {path:'',   redirectTo: '/'+this.jsonData[0].landing, pathMatch: 'full'},
   {path:this.jsonData[0].landing,component:LandingComponent},
   {path:this.jsonData[0].login,component:LoginComponent},
   {path:this.jsonData[0].manager,component:AdminComponent},
@@ -52,38 +62,36 @@ export class LandingComponent implements OnInit {
   }
   
   ngOnInit() {    
-  this.httpClient.get("../../../env.json").toPromise().then((response : any) => {
+     this.httpClient.get("../../../env.json").toPromise().then((response : any) => {
     this.jsonData.push(response)
     this.sharedsrv.jsonData = this.jsonData
         })
-        
-  $('fileup').attr('src',this.filepath)
+ 
+//         var xhr = new XMLHttpRequest();
+//         xhr.open('GET', this.filepath, true);
+//         xhr.responseType = 'blob'; //important
+//         xhr.onload = function(e) {
+//             if (this.status == 200) {
+//                 var blob = this.response;
+//                 var x = document.createElement("VIDEO");
 
-  var request = new XMLHttpRequest();
-  request.open('GET', this.filepath, true);
-  request.responseType = 'blob';
-  request.onload = function() {
-  var reader = new FileReader();
-  
-  reader.readAsDataURL(request.response);
-  reader.onload =  function(e){
-  const dataurl = (e.target as any).result
+// x.setAttribute("src",URL.createObjectURL(blob));
+// x.setAttribute("width", "320");
+// x.setAttribute("height", "240");
+// x.setAttribute("controls", "controls");
+// x.setAttribute("id", "vdrsrc");
+// // x.setAttribute("autoplay","autoplay")
+// x.setAttribute("controlsList","nodownload")
+// x.setAttribute("disablepictureinpicture","true")
+// document.getElementById('parentdiv').appendChild(x);
 
-  var x = document.createElement("VIDEO");
-
-x.setAttribute("src",dataurl);
-x.setAttribute("width", "320");
-x.setAttribute("height", "240");
-x.setAttribute("controls", "controls");
-// x.setAttribute("autoplay","autoplay")
-x.setAttribute("controlsList","nodownload")
-x.setAttribute("disablepictureinpicture","true")
-document.getElementById('parentdiv').appendChild(x);
-
-    };
-};
-request.send();
-
+//                 var  video = document.getElementById('vdrsrc');
+//                 video.oncanplaythrough = function() {
+//                     console.log("Can play through video without stopping");
+//                 };
+//             }
+//         };
+//         xhr.send();
   }
 
   savetoserver(){

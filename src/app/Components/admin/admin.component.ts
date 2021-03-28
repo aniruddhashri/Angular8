@@ -21,6 +21,7 @@ export class AdminComponent implements OnInit {
 
   dishname:String
   price:number;
+  dishtype:String ="";
   dishimage:File
 
   menudatareq:any
@@ -69,7 +70,7 @@ export class AdminComponent implements OnInit {
 
   AddMenu()
   {
-    this.menudatareq = ({dishname:this.dishname,price: this.price,dishimg:this.cardImageBase64})
+    this.menudatareq = ({dishname:this.dishname,price: this.price,dishimg:this.cardImageBase64,dishtype:this.dishtype})
 
     this.sharedser.addmenu(this.menudatareq).subscribe(
       menuresp =>{
@@ -77,9 +78,10 @@ export class AdminComponent implements OnInit {
         this.menudatareq = ""
         if(menuresp.status == 200)
         {
-        this.menudataresp.push({dishname:this.dishname,price: this.price,dishimg:this.cardImageBase64});
+        this.menudataresp.push({dishname:this.dishname,price: this.price,dishimg:this.cardImageBase64,dishtype:this.dishtype});
         this.dishname = ""
         this.price = null
+        this.dishtype= ""
         this.dishimage = null
         this.cardImageBase64 = null;
         this.isImageSaved = false;
