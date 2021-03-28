@@ -38,7 +38,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-//import { CheckoutComponent } from './Components/checkout/checkout.component'
+import { CheckoutComponent } from './Components/checkout/checkout.component'
 
 @NgModule({
   declarations: [
@@ -58,7 +58,7 @@ import { MatListModule } from '@angular/material/list';
     FiltercomponentComponent,
     TableFilterPipe,
     MatDataFilterComponent,
-   // CheckoutComponent,
+    CheckoutComponent,
     // MyDashboardComponent,
     // MatnavigationComponent
   ],

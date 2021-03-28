@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TableFilterPipe implements PipeTransform {
 
-  transform(list: any[], value: string) {
+  transform(list: any[], value: String) {
 
     return value ? list.filter(item => item.dishtype === value) : list;
   }
