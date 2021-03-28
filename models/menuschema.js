@@ -4,7 +4,9 @@ const menuschema = new mongoose.Schema(
     {
         dishname : String,
         price : String,
-        dishimg : String
+        dishimg : String,
+        dishtype : String,
+        quantity: Number
     });
 
 

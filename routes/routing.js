@@ -2,40 +2,42 @@ const router = require("express").Router();
 
 const Register = require("../models/registerschema")
 const Menus = require("../models/menuschema")
+const mongoose  = require("mongoose");
 const dotenv = require("dotenv");
 
-// var https = require('https');
+ var https = require('https');
+ var _ = require("underscore");
 
-// router.get("/check",(req,resp)=>{
-//     try
-//     {
+router.get("/check",(req,resp)=>{
+    try
+    {
 
-//         // https.get('https://jsonplaceholder.typicode.com/photos', (resp1) => {
-//         https.get(process.env.APIURL, (resp1) => {
-//         let data = '';
+        // https.get('https://jsonplaceholder.typicode.com/photos', (resp1) => {
+        https.get(process.env.APIURL, (resp1) => {
+        let data = '';
 
-//         resp1.on('data', (chunk) => {
-//         data += chunk;
-//         });
+        resp1.on('data', (chunk) => {
+        data += chunk;
+        });
 
-//         // The whole response has been received. Print out the result.
-//         resp1.on('end', () => {
-//         // console.log(JSON.parse(data));
+        // The whole response has been received. Print out the result.
+        resp1.on('end', () => {
+        // console.log(JSON.parse(data));
         
-//         resp.json({data1: JSON.parse(data),status:100});        
-//         });
+        resp.json({data1: JSON.parse(data),status:100});        
+        });
 
-//         }).on("error", (err) => {
-//         console.log("Error: " + err.message);
-//         });
+        }).on("error", (err) => {
+        console.log("Error: " + err.message);
+        });
         
         
-//     }
-//     catch(err) 
-//     {
-//         resp.send({error:err,status:500});
-//     }
-// })
+    }
+    catch(err) 
+    {
+        resp.send({error:err,status:500});
+    }
+})
 
 router.post("/register",async (req,resp)=>{
     const register = new Register({
@@ -115,7 +117,8 @@ router.post("/addmenu",(req,resp)=>{
     const menus = new Menus({
         dishname : req.body.dishname,
         price : req.body.price,
-        dishimg : req.body.dishimg
+        dishimg : req.body.dishimg,
+        dishtype : req.body.dishtype
     })
     try
     {
@@ -152,7 +155,8 @@ router.get("/fetchmenu",(req,resp)=>{
     const menus = new Menus({
         dishname : req.body.dishname,
         price : req.body.price,
-        dishimg : req.body.dishimg
+        dishimg : req.body.dishimg,
+        dishtype : req.body.dishtype
     })
 
     try
